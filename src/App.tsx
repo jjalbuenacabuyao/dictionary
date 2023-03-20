@@ -1,10 +1,11 @@
 import React from 'react'
+import { Footer, Main, Navbar } from './components'
 
 type Props = {}
 
 function App({}: Props) {
   return (
-    <div>App</div>
+    <Navbar />
   )
 }
 
