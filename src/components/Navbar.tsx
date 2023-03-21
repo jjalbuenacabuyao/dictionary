@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaGithub } from "react-icons/fa"
 import { FiBook } from "react-icons/fi"
 import { MdLightMode, MdDarkMode } from "react-icons/md"
 
 
 const Navbar = () => {
-  const htmlClassList : DOMTokenList = document.documentElement.classList;
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState("dark");
   let isDark : boolean = theme === "dark";
 
-  isDark ? htmlClassList.add("dark")
-         : htmlClassList.remove("dark");
+  useEffect(() => {
+    const htmlClassList : DOMTokenList = document.documentElement.classList;
+    isDark ? htmlClassList.add("dark")
+           : htmlClassList.remove("dark");
+  }, [theme])
 
   return (
     <header className="flex items-center justify-between">
