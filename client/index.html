@@ -1,19 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/style.css" />
     <script src="./htmx/htmx.min.js"></script>
     <script type="module" src="./main.js" defer></script>
     <title>Dictionary | FEM</title>
   </head>
-  <body>
-    <header></header>
-
-    <main></main>
-    
-    <footer></footer>
+  <body data-theme="light">
+    <div>
+      <header>
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 34 38"
+            class="logo"
+          >
+            <g
+              fill="none"
+              fill-rule="evenodd"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.5"
+            >
+              <path
+                d="M1 33V5a4 4 0 0 1 4-4h26.8A1.2 1.2 0 0 1 33 2.2v26.228M5 29h28M5 37h28"
+              ></path>
+              <path stroke-linejoin="round" d="M5 37a4 4 0 1 1 0-8"></path>
+              <path d="M11 9h12"></path>
+            </g>
+          </svg>
+        </a>
+        <nav>
+          <ul>
+            <li>
+              <label for="font">Choose font</label>
+              <select name="font" id="font" data-font-selector>
+                <option value="sans-serif">Sans Serif</option>
+                <option value="serif">Serif</option>
+                <option value="monospace">Monospace</option>
+              </select>
+            </li>
+            <li>
+              <button id="theme-toggler">Toggle</button>
+            </li>
+            <li>
+              <img src="/moon.svg" alt="Dark mode icon" />
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main id="main" data-font-family="sans-serif"></main>
+      <footer></footer>
+    </div>
   </body>
 </html>
