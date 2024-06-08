@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./public/fonts/inter/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./public/fonts/inter/Inter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./public/fonts/merriweather/Merriweather-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./public/fonts/merriweather/Merriweather-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./public/fonts/merriweather/Merriweather-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Merriweather";
+  src: url("./public/fonts/merriweather/Merriweather-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("./public/fonts/space-mono/SpaceMono-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("./public/fonts/space-mono/SpaceMono-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("./public/fonts/space-mono/SpaceMono-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Space Mono";
+  src: url("./public/fonts/space-mono/SpaceMono-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+
+:root {
+  --sans-serif: "Inter";
+  --serif: "Merriweather";
+  --monospace: "Space Mono";
+  --sans-serif-fallback: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --serif-fallback: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  --monospace-fallback: 'Courier New', Courier, monospace;
+}
