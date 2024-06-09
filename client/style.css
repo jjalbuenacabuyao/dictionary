@@ -116,6 +116,18 @@ audio {
   max-width: 100%;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 body {
   --font-family: var(--sans-serif), var(--sans-serif-fallback);
   --bg-color: var(--clr-white);
@@ -134,9 +146,26 @@ body[data-theme="dark"] {
 }
 
 .logo {
+  width: 2rem;
+  height: 2rem;
   color: var(--clr-black);
 }
 
 body[data-theme="dark"] .logo {
   color: var(--clr-white);
+}
+
+header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.moon {
+  color: var(--clr-black);
+}
+
+nav > ul {
+  display: flex;
 }
