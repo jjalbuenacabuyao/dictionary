@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/style.css" />
-    <script src="./htmx/htmx.min.js"></script>
+    
     <script type="module" src="./main.js" defer></script>
     <title>Dictionary | FEM</title>
   </head>
@@ -36,7 +36,7 @@
         <nav>
           <ul>
             <li>
-              <label for="font">Choose font</label>
+              <label for="font" class="sr-only">Choose font</label>
               <select name="font" id="font" data-font-selector>
                 <option value="sans-serif">Sans Serif</option>
                 <option value="serif">Serif</option>
@@ -47,13 +47,40 @@
               <button id="theme-toggler">Toggle</button>
             </li>
             <li>
-              <img src="/moon.svg" alt="Dark mode icon" />
+              <svg
+                class="moon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                stroke="currentColor"
+              >
+                <path
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"
+                ></path>
+              </svg>
             </li>
           </ul>
         </nav>
       </header>
-      <main id="main" data-font-family="sans-serif"></main>
+      <main id="main" data-font-family="sans-serif">
+        <form
+          hx-post="http://localhost:8080/search"
+          hx-trigger="submit"
+          hx-target="#res"
+          method="post"
+        >
+          <input type="text" name="search" id="search" />
+          <button type="submit">Search</button>
+        </form>
+        <div id="res"></div>
+      </main>
       <footer></footer>
     </div>
   </body>
+  <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
 </html>
