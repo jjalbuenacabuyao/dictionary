@@ -1,0 +1,18 @@
+{{ block "index" . }}
+  {{ range . }}
+    <div>
+      <div>
+        <div>
+          <h1>{{ .Word }}</h1>
+          {{ template "phonetic" .Phonetics }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ block "phonetic" . }}
+  {{ with firstItem . }}
+    <span>{{ .Text }}</span>
+  {{ end }}
+{{ end }}
