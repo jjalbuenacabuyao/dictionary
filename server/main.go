@@ -42,25 +42,25 @@ type MinimizedApiResponse struct {
 	Source string
 }
 
-func FetchData(word string) (ApiResponse, error) {
+func FetchData(word string) (*ApiResponse, error) {
 	url := "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
 	response, err := http.Get(url)
 	if err != nil {
-		return ApiResponse{}, err
+		return &ApiResponse{}, err
 	}
 	defer response.Body.Close()
 
 	body, err := io.ReadAll(response.Body)
 	if err != nil {
-		return ApiResponse{}, err
+		return &ApiResponse{}, err
 	}
 
 	var data ApiResponse
 	if err := json.Unmarshal(body, &data); err != nil {
-		return ApiResponse{}, err
+		return &ApiResponse{}, err
 	}
 
-	return data, nil
+	return &data, nil
 }
 
 func handleHomepage(w http.ResponseWriter, r *http.Request) {
@@ -76,7 +76,7 @@ func handleSearch(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var minimizedData MinimizedApiResponse
-	for _, v := range res {
+	for _, v := range *res {
 		minimizedData.Word = v.Word
 		minimizedData.PhoneticText = v.Phonetics[0].Text
 
