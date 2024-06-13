@@ -10,7 +10,6 @@ import (
 
 type ApiResponse []struct {
 	Word      string `json:"word"`
-	Phonetic  string `json:"phonetic"`
 	Phonetics []struct {
 		Text  string `json:"text"`
 		Audio string `json:"audio,omitempty"`
@@ -20,11 +19,27 @@ type ApiResponse []struct {
 		Definitions  []struct {
 			Definition string   `json:"definition"`
 			Example    string   `json:"example"`
-			Synonyms   []string `json:"synonyms"`
-			Antonyms   []string `json:"antonyms"`
 		} `json:"definitions"`
+		Synonyms   []string `json:"synonyms"`
+		Antonyms   []string `json:"antonyms"`
 	} `json:"meanings"`
-	Source    []string    `json:"sourceUrls"`
+	Source []string `json:"sourceUrls"`
+}
+
+type MinimizedApiResponse struct {
+	Word          string
+	PhoneticText  string
+	PhoneticAudio string
+	Meanings      []struct {
+		PartOfSpeech string
+		Definitions  []struct {
+			Definition string
+			Example    string
+		}
+		Synonyms   []string
+		Antonyms   []string
+	}
+	Source string
 }
 
 func FetchData(word string) (ApiResponse, error) {
@@ -59,26 +74,34 @@ func handleSearch(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	funcs := template.FuncMap{
-		"firstItem": func(items []struct {
-		Text  string
-		Audio string
-	}) *struct {
-		Text  string
-		Audio string
-	} {
-			if len(items) > 0 {
-				return &items[0]
-			}
 
-			return nil
-		},
+	var minimizedData MinimizedApiResponse
+	for _, v := range res {
+		minimizedData.Word = v.Word
+		minimizedData.PhoneticText = v.Phonetics[0].Text
+
+		for _, p := range v.Phonetics {
+			if p.Audio != "" {
+				minimizedData.PhoneticAudio = p.Audio
+				break
+			}
+		}
+
+		minimizedData.Meanings = []struct {
+			PartOfSpeech string
+			Definitions  []struct {
+				Definition string
+				Example    string
+			}
+			Synonyms   []string
+			Antonyms   []string
+		}(v.Meanings)
+		minimizedData.Source = v.Source[0]
 	}
 
-	tmpl, _ := template.New("templates/template.html").Funcs(funcs).ParseFiles("templates/template.html")
-	// tmpl := template.Must(template.ParseFiles("templates/template.html"))
+	tmpl := template.Must(template.ParseFiles("templates/template.html"))
 
-	tmpl.Execute(w, res)
+	tmpl.Execute(w, minimizedData)
 }
 
 func main() {
