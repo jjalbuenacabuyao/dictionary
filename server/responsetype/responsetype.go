@@ -18,18 +18,20 @@ type ApiResponse []struct {
 	Source []string `json:"sourceUrls"`
 }
 
+type Meaning struct {
+	PartOfSpeech string
+	Definitions  []struct {
+		Definition string
+		Example    string
+	}
+	Synonyms []string
+	Antonyms []string
+}
+
 type MinimizedApiResponse struct {
 	Word          string
 	PhoneticText  string
 	PhoneticAudio string
-	Meanings      []struct {
-		PartOfSpeech string
-		Definitions  []struct {
-			Definition string
-			Example    string
-		}
-		Synonyms []string
-		Antonyms []string
-	}
-	Source string
+	Meanings      []Meaning
+	Source        string
 }
