@@ -1,31 +1,28 @@
 package fmtresponse
 
-import rst "github.com/jjalbuenacabuyao/dictionary/responsetype"
+import (
+	rst "github.com/jjalbuenacabuyao/dictionary/responsetype"
+)
 
-func FormatApiResponse(res *rst.ApiResponse) (*rst.MinimizedApiResponse) {
+func FormatApiResponse(r *rst.ApiResponse) *rst.MinimizedApiResponse {
+	resp := *r
 	var minimizedData rst.MinimizedApiResponse
 
-	for _, v := range *res {
-		minimizedData.Word = v.Word
-		minimizedData.PhoneticText = v.Phonetics[0].Text
+	minimizedData.Word = resp[0].Word
+	minimizedData.Source = resp[0].Source[0]
 
-		for _, p := range v.Phonetics {
-			if p.Audio != "" {
-				minimizedData.PhoneticAudio = p.Audio
-				break
-			}
+	for i, v := range resp {
+		if minimizedData.PhoneticText == "" {
+			minimizedData.PhoneticText = v.Phonetics[i].Text
 		}
 
-		minimizedData.Meanings = []struct {
-			PartOfSpeech string
-			Definitions  []struct {
-				Definition string
-				Example    string
-			}
-			Synonyms   []string
-			Antonyms   []string
-		}(v.Meanings)
-		minimizedData.Source = v.Source[0]
+		if minimizedData.PhoneticAudio == "" && v.Phonetics[i].Audio != "" {
+			minimizedData.PhoneticAudio = v.Phonetics[i].Audio
+		}
+
+		for _, m := range v.Meanings {
+			minimizedData.Meanings = append(minimizedData.Meanings, rst.Meaning(m))
+		}
 	}
 
 	return &minimizedData
