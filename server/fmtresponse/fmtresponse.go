@@ -16,8 +16,13 @@ func FormatApiResponse(r *rst.ApiResponse) *rst.MinimizedApiResponse {
 			minimizedData.PhoneticText = v.Phonetics[i].Text
 		}
 
-		if minimizedData.PhoneticAudio == "" && v.Phonetics[i].Audio != "" {
-			minimizedData.PhoneticAudio = v.Phonetics[i].Audio
+		if minimizedData.PhoneticAudio == "" {
+			for _, p := range v.Phonetics {
+				if p.Audio != "" {
+					minimizedData.PhoneticAudio = p.Audio
+					break
+				}
+			}
 		}
 
 		for _, m := range v.Meanings {
