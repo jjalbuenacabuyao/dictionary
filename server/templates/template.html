@@ -1,11 +1,17 @@
 {{ block "index" . }}
 <div>
-  <div>
+  <div class="term-container">
     <div>
-      <h1>{{ .Word }}</h1>
+      <h1 class="term">{{ .Word }}</h1>
       <p>{{ .PhoneticText }}</p>
     </div>
-    <audio controls src={{ .PhoneticAudio }}></audio>
+    <figure>
+      <figcaption class="sr-only">Listen to the pronounciation</figcaption>
+      <audio src={{ .PhoneticAudio }}></audio>
+      <button data-play-audio-button class="play-btn" aria-label="Play pronounciation">
+        <img src="./static/play.svg" alt="Play icon">
+      </button>
+    </figure>
   </div>
 
   <div>
@@ -21,6 +27,7 @@
             </li>
           {{ end }}
         </ul>
+        
         {{if gt (len .Synonyms) 0}}
           <div>
             <p>Synonyms:</p>
