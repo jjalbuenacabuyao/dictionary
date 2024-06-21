@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./static/style.css" />
-    
+
     <script type="module" src="./static/main.js" defer></script>
     <script src="./static/htmx.min.js"></script>
     <title>Dictionary | FEM</title>
@@ -72,13 +72,20 @@
         <form
           hx-post="/search"
           hx-trigger="submit"
-          hx-target="#res"
+          hx-target="#result"
           method="post"
         >
-          <input type="text" name="search" id="search" />
-          <button type="submit">Search</button>
+          <label for="search" class="sr-only">Search word</label>
+          <input type="text" name="search" id="search" placeholder="Search" />
+          <button aria-label="Search" type="submit" class="search-btn">
+            <svg width="20" height="20" viewBox="0 0 18 18"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"></path></svg>
+          </button>
         </form>
-        <div id="res"></div>
+        <div id="result">
+          <img src="./static/book.png" alt="Icon of a book">
+          <h1>Dictionary</h1>
+          <p>Start by typing the word you are looking for in the input above and press enter.</p>
+        </div>
       </main>
       <footer></footer>
     </div>
