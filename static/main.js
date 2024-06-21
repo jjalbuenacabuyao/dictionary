@@ -10,3 +10,9 @@ themeToggler.addEventListener("click", () => {
     body.setAttribute("data-theme", "light");
   }
 })
+
+const audioPlayer = document.querySelector("[data-audio-player]");
+const pronounciationAudio = document.querySelector("[data-pronounciation]");
+audioPlayer.addEventListener("click", () => {
+  pronounciationAudio.play();
+})
