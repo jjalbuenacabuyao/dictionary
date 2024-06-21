@@ -8,10 +8,18 @@ func FormatApiResponse(r *rst.ApiResponse) *rst.MinimizedApiResponse {
 	resp := *r
 	var minimizedData rst.MinimizedApiResponse
 
-	minimizedData.Word = resp[0].Word
-	minimizedData.Source = resp[0].Source[0]
+	// minimizedData.Word = resp[0].Word
+	// minimizedData.Source = resp[0].Source[0]
 
 	for i, v := range resp {
+		if minimizedData.Word == "" && v.Word != "" {
+			minimizedData.Word = v.Word
+		}
+
+		if minimizedData.Source == "" && v.Source[i] != "" {
+			minimizedData.Source = v.Source[i]
+		}
+
 		if minimizedData.PhoneticText == "" {
 			minimizedData.PhoneticText = v.Phonetics[i].Text
 		}
