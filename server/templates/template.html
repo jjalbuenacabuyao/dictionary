@@ -1,5 +1,6 @@
 {{ block "index" . }}
 <div>
+  <script src="./static/audioPlayer.js"></script>
   <div class="term-container">
     <div>
       <h1 class="term">{{ .Word }}</h1>
@@ -8,7 +9,7 @@
     <figure>
       <figcaption class="sr-only">Listen to the pronounciation</figcaption>
       <audio data-pronounciation src={{ .PhoneticAudio }}></audio>
-      <button data-audio-player class="play-btn" aria-label="Play pronounciation">
+      <button data-audioPlayer class="play-btn" aria-label="Play pronounciation">
         <img src="./static/play.svg" alt="Play icon">
       </button>
     </figure>
