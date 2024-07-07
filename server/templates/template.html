@@ -15,12 +15,12 @@
     </figure>
   </div>
 
-  <div>
+  <div class="definitions">
     {{ range .Meanings }}
       <div>
-        <h2>{{ .PartOfSpeech }}</h2>
+        <h2 class="part-of-speech">{{ .PartOfSpeech }}</h2>
         <p>Meaning</p>
-        <ul>
+        <ul class="def-list">
           {{ range .Definitions }}
             <li>
               <p>{{ .Definition }}</p>
@@ -30,20 +30,24 @@
         </ul>
         
         {{if gt (len .Synonyms) 0}}
-          <div>
+          <div class="synonyms-wrapper">
             <p>Synonyms:</p>
-            {{ range .Synonyms }}
-              <span>{{ . }}</span>
-            {{ end }}
+            <div>
+              {{ range .Synonyms }}
+                <span>{{ . }}</span>
+              {{ end }}
+            </div>
           </div>
         {{ end }}
 
         {{if gt (len .Antonyms) 0}}
-          <div>
+          <div class="antonyms-wrapper">
             <p>Antonyms:</p>
-            {{ range .Antonyms }}
-              <span>{{ . }}</span>
-            {{ end }}
+            <div>
+              {{ range .Antonyms }}
+                <span>{{ . }}</span>
+              {{ end }}
+            </div>
           </div>
         {{ end }}
       </div>
