@@ -258,6 +258,8 @@ audio {
 
 .term-container {
   margin-block: 2.5rem 1.5rem;
+  display: grid;
+  gap: 1.5rem;
 }
 
 .term-header {
@@ -275,3 +277,47 @@ audio {
   width: 4rem;
 }
 
+.definitions {
+  display: grid;
+  gap: 1rem;
+}
+
+.part-of-speech {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.def-list {
+  list-style: outside;
+  margin-left: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.def-list li::marker {
+  color: #0ea5e9;
+}
+
+.synonyms-wrapper,
+.antonyms-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+}
+
+.synonyms-wrapper {
+  margin-top: 1rem;
+}
+
+.antonyms-wrapper {
+  margin-top: 0.5rem;
+}
+
+.synonyms-wrapper > div,
+.antonyms-wrapper > div {
+  display: flex;
+  gap: 1ex;
+  flex-wrap: wrap;
+}
