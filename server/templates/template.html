@@ -18,8 +18,10 @@
   <div class="definitions">
     {{ range .Meanings }}
       <div>
-        <h2 class="part-of-speech">{{ .PartOfSpeech }}</h2>
-        <p>Meaning</p>
+        <h2>
+          <span class="part-of-speech">{{ .PartOfSpeech }}</span>
+        </h2>
+        <p class="meaning-title">Meaning</p>
         <ul class="def-list">
           {{ range .Definitions }}
             <li>
@@ -32,22 +34,26 @@
         {{if gt (len .Synonyms) 0}}
           <div class="synonyms-wrapper">
             <p>Synonyms:</p>
-            <div>
+            <ul>
               {{ range .Synonyms }}
-                <span>{{ . }}</span>
+                <li>
+                  <a class="synonym">{{ . }}</a>
+                </li>
               {{ end }}
-            </div>
+            </ul>
           </div>
         {{ end }}
 
         {{if gt (len .Antonyms) 0}}
           <div class="antonyms-wrapper">
             <p>Antonyms:</p>
-            <div>
+            <ul>
               {{ range .Antonyms }}
-                <span>{{ . }}</span>
+                <li>
+                  <button hx-post="/{{ . }}" hx-target="#result" class="antonym">{{ . }}</button>
+                </li>
               {{ end }}
-            </div>
+            </ul>
           </div>
         {{ end }}
       </div>
