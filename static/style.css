@@ -307,6 +307,7 @@ audio {
 
 .meaning-title {
   margin-bottom: 0.5rem;
+  color: #737373;
 }
 
 .def-list {
@@ -335,9 +336,21 @@ audio {
   margin-top: 0.5rem;
 }
 
-.synonyms-wrapper > div,
-.antonyms-wrapper > div {
+.synonyms-wrapper > ul,
+.antonyms-wrapper > ul {
   display: flex;
   gap: 1ex;
   flex-wrap: wrap;
+}
+
+.synonyms-wrapper a,
+.antonyms-wrapper a {
+  color: #0ea5e9;
+  font-weight: 700;
+}
+
+.synonyms-wrapper a:hover,
+.antonyms-wrapper a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.325rem;
 }
