@@ -170,6 +170,8 @@ body[data-theme="dark"] .logo {
   display: flex;
   flex-direction: column;
   min-height: 100dvh;
+  max-width: 40em;
+  margin: auto;
 }
 
 header {
@@ -183,6 +185,12 @@ footer {
   margin-bottom: 1rem;
   font-size: 0.625rem;
   text-align: center;
+}
+
+@media screen and (min-width: 48em) {
+  footer {
+    font-size: 0.875rem;
+  }
 }
 
 footer a {
@@ -254,6 +262,13 @@ audio {
 .default-content p {
   margin-inline: 1.5rem;
   font-size: 0.75rem;
+  max-width: 35ch;
+}
+
+@media screen and (min-width: 48em) {
+  .default-content p {
+    font-size: 0.875rem;
+  }
 }
 
 .term-container {
@@ -343,14 +358,25 @@ audio {
   flex-wrap: wrap;
 }
 
-.synonyms-wrapper a,
-.antonyms-wrapper a {
+.synonym,
+.antonym {
+  cursor: pointer;
+  font-size: 0.875rem;
   color: #0ea5e9;
   font-weight: 700;
 }
 
-.synonyms-wrapper a:hover,
-.antonyms-wrapper a:hover {
+.synonym:hover,
+.antonym:hover {
   text-decoration: underline;
   text-underline-offset: 0.325rem;
+}
+
+.source {
+  color: #737373;
+  display: grid;
+}
+
+.source > a {
+  color: var(--clr-black);
 }
