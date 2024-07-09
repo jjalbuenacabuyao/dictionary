@@ -13,8 +13,9 @@ func main() {
 
 	http.HandleFunc("/", handler.Homepage)
 	http.HandleFunc("/search", handler.Search)
+	http.HandleFunc("/term/{term}", handler.Term)
 
-	if err := http.ListenAndServe(":8080", nil); err != nil {
+	if err := http.ListenAndServe(":8888", nil); err != nil {
 		log.Fatal(err.Error())
 	}
 }
