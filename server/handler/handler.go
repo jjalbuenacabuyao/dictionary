@@ -27,3 +27,16 @@ func Search(w http.ResponseWriter, r *http.Request) {
 
 	tmpl.Execute(w, &minimizedData)
 }
+
+func Term (w http.ResponseWriter, r *http.Request) {
+	res, err := fetch.FetchData(r.PathValue("term"))
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	data := fmtresponse.FormatApiResponse(res)
+
+	tmpl := template.Must(template.ParseFiles("templates/template.html"))
+
+	tmpl.Execute(w, &data)
+}
