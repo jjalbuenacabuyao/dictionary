@@ -37,7 +37,7 @@
             <ul>
               {{ range .Synonyms }}
                 <li>
-                  <a class="synonym">{{ . }}</a>
+                  <button type="button" hx-get="/term/{{ . }}" hx-target="#result" class="synonym">{{ . }}</button>
                 </li>
               {{ end }}
             </ul>
@@ -50,7 +50,7 @@
             <ul>
               {{ range .Antonyms }}
                 <li>
-                  <button hx-post="/{{ . }}" hx-target="#result" class="antonym">{{ . }}</button>
+                  <button type="button" hx-get="/term/{{ . }}" hx-target="#result" class="antonym">{{ . }}</button>
                 </li>
               {{ end }}
             </ul>
@@ -58,6 +58,7 @@
         {{ end }}
       </div>
     {{ end }}
+    <p class="source">Source: <a target="_blank" href="{{ .Source }}">{{ .Source }}</a></p>
   </div>
 </div>
 {{ end }}
