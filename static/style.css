@@ -156,6 +156,14 @@ body[data-theme="dark"] {
   --text-color: var(--clr-white);
 }
 
+body[data-font="serif"] {
+  --font-family: var(--serif), var(--serif-fallback);
+}
+
+body[data-font="serif"] {
+  --font-family: var(--monospace), var(--monospace-fallback);
+}
+
 .logo {
   width: 2rem;
   height: 2rem;
@@ -379,4 +387,8 @@ audio {
 
 .source > a {
   color: var(--clr-black);
+}
+
+body[data-theme="dark"] .source > a {
+  color: var(--clr-white);
 }
